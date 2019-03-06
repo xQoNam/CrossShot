@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     private Transform boar;
     //prędkość dzika
     public float speed;
+    public bool shouldRotate = false;
     private BoarSpawner spawner;
 
     // Start is called before the first frame update
@@ -42,22 +43,25 @@ public class Enemy : MonoBehaviour
 
     void Rotation()
     {
-        //w zależności od pozycji dzikia obróć jego teksturke
-        if(transform.position.x < 0 && transform.position.y==0)
+        if (shouldRotate)
         {
-            transform.Rotate(0, 0, 0, Space.World);
-        }
-        else if(transform.position.x == 0 && transform.position.y > 0)
-        {
-            transform.Rotate(0, 0, -90, Space.World);
-        }
-        else if(transform.position.x == 0 && transform.position.y < 0)
-        {
-            transform.Rotate(0, 0, 90, Space.World);
-        }
-        else if(transform.position.x > 0 && transform.position.y == 0)
-        {
-            transform.Rotate(0, 180, 0, Space.World);
+            //w zależności od pozycji dzikia obróć jego teksturke
+            if (transform.position.x < 0 && transform.position.y == 0)
+            {
+                transform.Rotate(0, 0, 0, Space.World);
+            }
+            else if (transform.position.x == 0 && transform.position.y > 0)
+            {
+                transform.Rotate(0, 0, -90, Space.World);
+            }
+            else if (transform.position.x == 0 && transform.position.y < 0)
+            {
+                transform.Rotate(0, 0, 90, Space.World);
+            }
+            else if (transform.position.x > 0 && transform.position.y == 0)
+            {
+                transform.Rotate(0, 180, 0, Space.World);
+            }
         }
     }
 

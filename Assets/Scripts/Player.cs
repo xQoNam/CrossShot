@@ -13,8 +13,6 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Ustaw pozycje na 0.0.0
-        transform.position = Vector3.zero;
         timeBtwAttack = -1;
     }
 
