@@ -5,8 +5,6 @@ using UnityEngine;
 public class SoundController : MonoBehaviour
 {
     public AudioSource enemyHit;
-    public void EnemyHit()
-    {
-        enemyHit.Play();
-    }
+    public AudioSource playerHit;
+    public AudioSource playerShot;
 }

@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour
     {
         spawner = FindObjectOfType<BoarSpawner>();
         soundController = FindObjectOfType<SoundController>();
+        soundController.playerShot.Play();
     }
     // Update is called once per frame
     void Update()
@@ -44,7 +45,7 @@ public class Projectile : MonoBehaviour
     {
         if(collision.CompareTag("Enemy"))
         {
-            soundController.EnemyHit();
+            soundController.enemyHit.Play();
             spawner.score += 1;
             Destroy(gameObject);
             Destroy(collision.gameObject);

@@ -7,12 +7,14 @@ public class Player : MonoBehaviour
     public float startTimeBtwAttack;
     public int lifes = 3;
     private float timeBtwAttack;
+    private SoundController soundController;
     public GameObject projectile;
     Vector3 positionHorizontal = new Vector3(0.4f, 0, 0);
     Vector3 positionVertical = new Vector3(0, 0.4f, 0);
     // Start is called before the first frame update
     void Start()
     {
+        soundController = FindObjectOfType<SoundController>();
         timeBtwAttack = -1;
     }
 
@@ -63,7 +65,8 @@ public class Player : MonoBehaviour
         if(collision.CompareTag("Enemy"))
         {
             lifes -= 1;
-            if(lifes<=0)
+            soundController.playerHit.Play();
+            if (lifes<=0)
             {
                 Destroy(gameObject);
             }

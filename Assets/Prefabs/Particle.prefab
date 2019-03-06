@@ -127,6 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startTimeBtwAttack: 0.1
   lifes: 3
+  soundController: {fileID: 0}
   projectile: {fileID: 2087383415015982376, guid: 623316fbcebd1f44cb901d205a48a882,
     type: 3}
 --- !u!50 &2007911085
