@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
         Vector2 boarTransform = boar.transform.position;
         Vector2 targetTransform = target.transform.position;
         //przemieszczaj dzika w kierunku gracza
-        if(spawner.shortTimeBtwSpawn==1.6f && speed <20)
+        if(spawner.shortTimeBtwSpawn==1.6f && speed <10)
         {
             speed += 0.25f;
         }

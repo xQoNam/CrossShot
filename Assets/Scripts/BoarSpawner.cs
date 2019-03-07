@@ -11,11 +11,13 @@ public class BoarSpawner : MonoBehaviour
     Vector3 positionRightLeft = new Vector3(9.5f,0,0);
     private float timeBtwSpawn= 2;
     public float shortTimeBtwSpawn = 0;
-    private float timeBtwFasterSpawn = 5;
+    private float timeBtwFasterSpawn = 12;
     public GameObject boar;
+    private Player player;
     // Start is called before the first frame update
     void Start()
     {
+        player = FindObjectOfType<Player>();
         //wylosuj przypadkową liczbę
         Spawn();
     }
@@ -56,7 +58,6 @@ public class BoarSpawner : MonoBehaviour
             //stwórz dzika na pozycji dobranej na podstawie przypadkowej liczby
             Instantiate(boar, position, Quaternion.identity);
             timeBtwSpawn = 2 - shortTimeBtwSpawn;
-            Debug.Log(timeBtwSpawn);
         }
         else
         {
@@ -68,8 +69,12 @@ public class BoarSpawner : MonoBehaviour
         timeBtwFasterSpawn -= Time.deltaTime;
         if(timeBtwFasterSpawn<=0 && shortTimeBtwSpawn<1.6)
         {
-            timeBtwFasterSpawn = 5;
+            timeBtwFasterSpawn = 12;
             shortTimeBtwSpawn += 0.4f;
+        }
+        if(shortTimeBtwSpawn>=1.6)
+        {
+            player.startTimeBtwAttack = 0.2f;
         }
     }
 }
