@@ -5,6 +5,7 @@ using UnityEngine;
 public class BoarSpawner : MonoBehaviour
 {
     public int score = 0;
+    public bool isPlaying = true;
     //pozycja góra dół
     Vector3 positionUpDown = new Vector3(0, 5.5f, 0);
     //pozycja prawa lewa
@@ -20,6 +21,7 @@ public class BoarSpawner : MonoBehaviour
         player = FindObjectOfType<Player>();
         //wylosuj przypadkową liczbę
         Spawn();
+        DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame
@@ -34,7 +36,7 @@ public class BoarSpawner : MonoBehaviour
         float number;
         Vector3 position = Vector3.zero;
         //odczekaj odpowiednią ilość czasu
-        if (timeBtwSpawn <=0)
+        if (timeBtwSpawn <=0 && isPlaying)
         {
             //losuj przypadkową liczbę
             number = Random.Range(0, 4);

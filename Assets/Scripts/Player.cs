@@ -6,16 +6,21 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     public float startTimeBtwAttack;
-    public int lifes = 3;
+    public int HP = 4;
     private float timeBtwAttack;
     private SoundController soundController;
     public GameObject projectile;
+    public GameObject HP1;
+    public GameObject HP2;
+    public GameObject HP3;
+    private BoarSpawner boarSpawner;
     Vector3 positionHorizontal = new Vector3(0.4f, 0, 0);
     Vector3 positionVertical = new Vector3(0, 0.4f, 0);
     // Start is called before the first frame update
     void Start()
     {
         soundController = FindObjectOfType<SoundController>();
+        boarSpawner = FindObjectOfType<BoarSpawner>();
         timeBtwAttack = -1;
     }
 
@@ -23,6 +28,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         Shot();
+        LifeHandler();
     }
 
     void Shot()
@@ -65,14 +71,18 @@ public class Player : MonoBehaviour
     {
         if(collision.CompareTag("Enemy"))
         {
-            lifes -= 1;
+            HP -= 1;
             soundController.playerHit.Play();
-            if (lifes<=0)
-            {
-                Destroy(gameObject);
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
         }
         
+    }
+    private void LifeHandler()
+    {
+        if (HP <= 0)
+        {
+            Destroy(gameObject);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            boarSpawner.isPlaying = false;
+        }
     }
 }
