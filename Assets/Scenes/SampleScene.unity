@@ -286,12 +286,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &457612540 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 457612540, guid: 461093fb92d0349469eab80e3b6f89db,
-    type: 3}
-  m_PrefabInstance: {fileID: 362853450448073358}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -4321,18 +4315,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &1957631000 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1957631000, guid: 461093fb92d0349469eab80e3b6f89db,
-    type: 3}
-  m_PrefabInstance: {fileID: 362853450448073358}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1998057025 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1998057025, guid: 461093fb92d0349469eab80e3b6f89db,
-    type: 3}
-  m_PrefabInstance: {fileID: 362853450448073358}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2007706698
 GameObject:
   m_ObjectHideFlags: 0
@@ -4527,17 +4509,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2007911084, guid: 461093fb92d0349469eab80e3b6f89db, type: 3}
-      propertyPath: life1
-      value: 
-      objectReference: {fileID: 457612540}
-    - target: {fileID: 2007911084, guid: 461093fb92d0349469eab80e3b6f89db, type: 3}
-      propertyPath: life2
-      value: 
-      objectReference: {fileID: 1957631000}
-    - target: {fileID: 2007911084, guid: 461093fb92d0349469eab80e3b6f89db, type: 3}
-      propertyPath: life3
-      value: 
-      objectReference: {fileID: 1998057025}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 461093fb92d0349469eab80e3b6f89db, type: 3}
