@@ -72,5 +72,12 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    void ChooseEnemy()
+    {
+        int enemyID = Random.Range(0, 3);
+        if (enemyID==0)
+        {
 
+        }
+    }
 }
