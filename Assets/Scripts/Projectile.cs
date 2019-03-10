@@ -5,12 +5,12 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float verticalSpeed;
-    private BoarSpawner spawner;
+    private GameController score;
     private SoundController soundController;
 
     private void Start()
     {
-        spawner = FindObjectOfType<BoarSpawner>();
+        score = FindObjectOfType<GameController>();
         soundController = FindObjectOfType<SoundController>();
         soundController.playerShot.Play();
     }
@@ -46,7 +46,7 @@ public class Projectile : MonoBehaviour
         if(collision.CompareTag("Enemy"))
         {
             soundController.enemyHit.Play();
-            spawner.score += 1;
+            score.score += 1;
             Destroy(gameObject);
             Destroy(collision.gameObject);
         }
