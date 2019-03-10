@@ -10,9 +10,7 @@ public class Player : MonoBehaviour
     private float timeBtwAttack;
     private SoundController soundController;
     public GameObject projectile;
-    public GameObject HP1;
-    public GameObject HP2;
-    public GameObject HP3;
+    public GameObject loseScreen;
     private BoarSpawner boarSpawner;
     Vector3 positionHorizontal = new Vector3(0.4f, 0, 0);
     Vector3 positionVertical = new Vector3(0, 0.4f, 0);
@@ -81,7 +79,8 @@ public class Player : MonoBehaviour
         if (HP <= 0)
         {
             Destroy(gameObject);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            loseScreen.SetActive(true);
+            Destroy(boarSpawner);
         }
     }
 }

@@ -6,11 +6,13 @@ using TMPro;
 public class GameController : MonoBehaviour
 {
     public int score = 0;
+    private Player player;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI loseScoreText;
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+        player = FindObjectOfType<Player>();
     }
     private void Update()
     {
@@ -19,6 +21,15 @@ public class GameController : MonoBehaviour
 
     public void SetScore()
     {
-        scoreText.text = "Score:  " + score.ToString();
+        loseScoreText.text= "YOUR SCORE:  " + score.ToString();
+        if(player.HP!=0)
+        {
+            scoreText.text = "Score:  " + score.ToString();
+        }
+        else
+        {
+            Destroy(scoreText);
+        }
+        
     }
 }
