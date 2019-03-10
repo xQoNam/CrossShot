@@ -11,8 +11,12 @@ public class Enemy : MonoBehaviour
     private Transform boar;
     //prędkość dzika
     public float speed;
+    private int healthPoints = 1;
+    public bool moveFaster = false;
+    public bool isTank = false;
     public bool shouldRotate = false;
     private BoarSpawner spawner;
+    private GameController score;
 
     // Start is called before the first frame update
     void Start()
@@ -20,13 +24,22 @@ public class Enemy : MonoBehaviour
         spawner = FindObjectOfType<BoarSpawner>();
         //pobierz pozycję dzika
         boar = GetComponent<Transform>();
+        score = FindObjectOfType<GameController>();
         Rotation();
+        if (isTank)
+        {
+            healthPoints = 2;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         MoveTowards();
+        if(moveFaster)
+        {
+            MoveFaster();
+        }
     }
 
     void MoveTowards()
@@ -34,10 +47,6 @@ public class Enemy : MonoBehaviour
         Vector2 boarTransform = boar.transform.position;
         Vector2 targetTransform = target.transform.position;
         //przemieszczaj dzika w kierunku gracza
-        if(spawner.shortTimeBtwSpawn==1.6f && speed <10)
-        {
-            speed += 0.25f;
-        }
         transform.position = Vector2.MoveTowards(boarTransform, targetTransform, speed * Time.deltaTime);
     }
 
@@ -71,13 +80,39 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-    void ChooseEnemy()
-    {
-        int enemyID = Random.Range(0, 3);
-        if (enemyID==0)
+        else if(collision.CompareTag("Projectile"))
         {
-
+            healthPoints--;
+            if(healthPoints==0)
+            {
+                ScoreHandler();
+                Destroy(gameObject);
+            }         
         }
     }
+    
+    private void MoveFaster()
+    {
+        if (speed < 10)
+        {
+            speed += 0.25f;
+        }
+    }
+    private void ScoreHandler()
+    {
+        if(moveFaster)
+        {
+            score.score += 3;
+        }
+        else if(isTank)
+        {
+            score.score += 2;
+        }
+        else
+        {
+            score.score += 1;
+        }
+    }
+
+    
 }

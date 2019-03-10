@@ -5,12 +5,10 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float verticalSpeed;
-    private GameController score;
     private SoundController soundController;
 
     private void Start()
     {
-        score = FindObjectOfType<GameController>();
         soundController = FindObjectOfType<SoundController>();
         soundController.playerShot.Play();
     }
@@ -46,9 +44,7 @@ public class Projectile : MonoBehaviour
         if(collision.CompareTag("Enemy"))
         {
             soundController.enemyHit.Play();
-            score.score += 1;
             Destroy(gameObject);
-            Destroy(collision.gameObject);
         }
         else if(collision.CompareTag("Limiter"))
         {
