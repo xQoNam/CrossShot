@@ -4,23 +4,19 @@ using UnityEngine;
 
 public class BoarSpawner : MonoBehaviour
 {
-    //pozycja góra dół
-    Vector3 positionUpDown = new Vector3(0, 5.5f, 0);
-    //pozycja prawa lewa
-    Vector3 positionRightLeft = new Vector3(9.5f,0,0);
-    private float timeBtwSpawn= 2;
-    public float shortTimeBtwSpawn = 0;
-    private float timeBtwFasterSpawn = 12;
+    [Header("Types of enemies")]
     public GameObject boar;
     public GameObject grayGhost;
     public GameObject whiteGhost;
-    private Player player;
-    // Start is called before the first frame update
+    private float timeBtwSpawn = 1.25f; //seconds left to spawn new enemy
+    private float shortTimeBtwSpawn = 0; //amount of time for which respawn is shortened 
+    private float timeBtwFasterSpawn = 12; //when this reach 0 timeBtwSpawn will be reduced by shortTimeBtwSpawn
+    private Vector3 positionUpDown = new Vector3(0, 5.5f, 0); //Vertical position of respawn
+    private Vector3 positionRightLeft = new Vector3(9.5f, 0, 0); //Horizontal positizion of respawn
+    private Player player; //used to change player attack speed when enemies are spawning realy fast
     void Start()
     {
         player = FindObjectOfType<Player>();
-        //wylosuj przypadkową liczbę
-        Spawn();
     }
 
     // Update is called once per frame
@@ -29,34 +25,32 @@ public class BoarSpawner : MonoBehaviour
         Spawn();
         FasterSpawn();
     }
-
+    //spawn randomly chosed enemies on random positions
     void Spawn()
     {
         Vector3 position = Vector3.zero;
-        //odczekaj odpowiednią ilość czasu
         if (timeBtwSpawn <=0)
         {
-            //losuj przypadkową liczbę
-            int number = Random.Range(0, 4);
+            int positionOfEnemy = Random.Range(0, 4);
             int enemyID = Random.Range(0, 3);
-            //dobierz pozycję według przypadkowej liczby
-            if (number==0)
+
+            if (positionOfEnemy==0)
             {
                 position = positionUpDown;
             }
-            else if (number==1)
+            else if (positionOfEnemy==1)
             {
                 position = positionRightLeft;
             }
-            else if (number==2)
+            else if (positionOfEnemy==2)
             {
                 position = -positionUpDown;
             }
-            else if (number==3)
+            else if (positionOfEnemy==3)
             {
                 position = -positionRightLeft;
             }
-            //stwórz dzika na pozycji dobranej na podstawie przypadkowej liczby
+
             if(enemyID==0)
             {
                 Instantiate(boar, position, Quaternion.identity);
@@ -78,15 +72,17 @@ public class BoarSpawner : MonoBehaviour
             timeBtwSpawn -= Time.deltaTime;
         }
     }
+    //reduce spawn cooldown after every 12 seconds by 0.4 second until it will be reduced by 1.6 second, after that make player shot faster
     void FasterSpawn()
     {
         timeBtwFasterSpawn -= Time.deltaTime;
+
         if(timeBtwFasterSpawn<=0 && shortTimeBtwSpawn<1.6)
         {
             timeBtwFasterSpawn = 12;
             shortTimeBtwSpawn += 0.4f;
         }
-        if(shortTimeBtwSpawn>=1.6)
+        else if(shortTimeBtwSpawn>=1.6)
         {
             player.startTimeBtwAttack = 0.1f;
         }

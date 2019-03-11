@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    [Header("Statistics")]
     public float verticalSpeed;
-    private SoundController soundController;
+    private SoundController soundController; //used to play a sound on collision with enemy and after shoting
 
     private void Start()
     {
@@ -18,9 +17,9 @@ public class Projectile : MonoBehaviour
         Move();   
     }
 
+    //choose direction depends on position of respawn
     void Move()
     {
-        //jeżeli pozycja jest taka to leć tam
         if(transform.position.y>=0.4f)
         {
             transform.position += new Vector3(0, verticalSpeed * Time.deltaTime, 0);

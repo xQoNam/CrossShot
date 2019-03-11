@@ -1,16 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 
 public class GameController : MonoBehaviour
 {
     public int score = 0;
-    private Player player;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI loseScoreText;
     public TextMeshProUGUI highScoreText;
-    // Start is called before the first frame update
+    private Player player; //used to check if the player is alive
     void Start()
     {
         player = FindObjectOfType<Player>();
@@ -31,7 +28,7 @@ public class GameController : MonoBehaviour
         }
         if(player.HP!=0)
         {
-            scoreText.text = "Score:  " + score.ToString();
+            scoreText.text = "Score:  " + score.ToString(); //change score text displayed when player is playing
         }
         else
         {

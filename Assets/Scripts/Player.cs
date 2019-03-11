@@ -1,20 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float startTimeBtwAttack;
+    [Header("Statistics")]
+    public float startTimeBtwAttack; //attack speed
     public int HP = 4;
-    private float timeBtwAttack;
-    private SoundController soundController;
-    public GameObject projectile;
-    public GameObject loseScreen;
-    private BoarSpawner boarSpawner;
-    Vector3 positionHorizontal = new Vector3(0.4f, 0, 0);
-    Vector3 positionVertical = new Vector3(0, 0.4f, 0);
-    // Start is called before the first frame update
+    [Header("References")]
+    public GameObject projectile; //used to instantiate projectile
+    public GameObject loseScreen; //used to turn ON lose screen when player is dead
+    private float timeBtwAttack; //attack speed aswell 
+    private SoundController soundController; //used to play sounds on collision with enemy
+    private BoarSpawner boarSpawner; //used to stop spawning enemies after death
+    //positions of projectiles after spawn
+    private Vector3 positionHorizontal = new Vector3(0.4f, 0, 0);
+    private Vector3 positionVertical = new Vector3(0, 0.4f, 0);
+
     void Start()
     {
         soundController = FindObjectOfType<SoundController>();
@@ -29,32 +29,29 @@ public class Player : MonoBehaviour
         LifeHandler();
     }
 
+    //instantiate projectiles
     void Shot()
     {
-        //jeżeli nie ma cd to strzelaj zależnie od wciśniętego klawisza
+
         if(timeBtwAttack <= 0)
         {
-            if(Input.GetKeyDown(KeyCode.W))
+            if(Input.GetKeyDown(KeyCode.W)) //shot up
             {
-                //strzelaj do góry
                 Instantiate(projectile, positionVertical, Quaternion.identity);
                 timeBtwAttack = startTimeBtwAttack;
             }
-            if(Input.GetKeyDown(KeyCode.S))
+            if(Input.GetKeyDown(KeyCode.S)) //shot down
             {
-                //strzelaj na dół
                 Instantiate(projectile, -positionVertical, Quaternion.identity);
                 timeBtwAttack = startTimeBtwAttack;
             }
-            if(Input.GetKeyDown(KeyCode.D))
+            if(Input.GetKeyDown(KeyCode.D)) //shot right
             {
-                //strzelaj w prawo
                 Instantiate(projectile, positionHorizontal, Quaternion.identity);
                 timeBtwAttack = startTimeBtwAttack;
             }
-            if(Input.GetKeyDown(KeyCode.A))
+            if(Input.GetKeyDown(KeyCode.A)) //shot left
             {
-                //strzelaj w lewo
                 Instantiate(projectile, -positionHorizontal, Quaternion.identity);
                 timeBtwAttack = startTimeBtwAttack;
             }
@@ -74,6 +71,7 @@ public class Player : MonoBehaviour
         }
         
     }
+    //Handle player's death
     private void LifeHandler()
     {
         if (HP <= 0)

@@ -270,7 +270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b531f3aadd71484eaa5f519612093df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shortTimeBtwSpawn: 0
   boar: {fileID: 1614856589987369311, guid: cfcb9702168114b4da8d04b003602d0b, type: 3}
   grayGhost: {fileID: 1614856589987369311, guid: 396fff9341c680948bb00ef8d7e348d6,
     type: 3}
@@ -5894,11 +5893,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 362853450689347117, guid: 461093fb92d0349469eab80e3b6f89db,
-        type: 3}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 362853450689347115, guid: 461093fb92d0349469eab80e3b6f89db,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5954,33 +5948,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 457612541, guid: 461093fb92d0349469eab80e3b6f89db, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 7.3599997
-      objectReference: {fileID: 0}
-    - target: {fileID: 457612541, guid: 461093fb92d0349469eab80e3b6f89db, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4.24
-      objectReference: {fileID: 0}
-    - target: {fileID: 200991201541508044, guid: 461093fb92d0349469eab80e3b6f89db,
+    - target: {fileID: 362853450689347117, guid: 461093fb92d0349469eab80e3b6f89db,
         type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6.87
-      objectReference: {fileID: 0}
-    - target: {fileID: 200991201541508044, guid: 461093fb92d0349469eab80e3b6f89db,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4.24
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675257187861191534, guid: 461093fb92d0349469eab80e3b6f89db,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6.38
-      objectReference: {fileID: 0}
-    - target: {fileID: 4675257187861191534, guid: 461093fb92d0349469eab80e3b6f89db,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4.24
+      propertyPath: m_Name
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2007911084, guid: 461093fb92d0349469eab80e3b6f89db, type: 3}
       propertyPath: loseScreen

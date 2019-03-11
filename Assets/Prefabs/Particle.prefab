@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 457612540}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.53, y: -4.65, z: 0}
+  m_LocalPosition: {x: 7.3599997, y: -4.24, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 362853450689347115}
@@ -225,9 +225,7 @@ MonoBehaviour:
   HP: 4
   projectile: {fileID: 2087383415015982376, guid: 623316fbcebd1f44cb901d205a48a882,
     type: 3}
-  HP1: {fileID: 0}
-  HP2: {fileID: 0}
-  HP3: {fileID: 0}
+  loseScreen: {fileID: 0}
 --- !u!50 &2007911085
 Rigidbody2D:
   serializedVersion: 4
@@ -291,7 +289,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5114991045296447229}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.04, y: -4.65, z: 0}
+  m_LocalPosition: {x: 6.87, y: -4.24, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 362853450689347115}
@@ -384,7 +382,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5442510247039736685}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.55, y: -4.65, z: 0}
+  m_LocalPosition: {x: 6.38, y: -4.24, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 362853450689347115}

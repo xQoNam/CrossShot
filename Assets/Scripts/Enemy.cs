@@ -1,39 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
-    //pozycja gracza
-    public Transform target;
-    //pozycja dzika
-    private Transform boar;
-    //prędkość dzika
-    public float speed;
-    private int healthPoints = 1;
+    [Header("Type of enemies")]
     public bool moveFaster = false;
     public bool isTank = false;
-    public bool shouldRotate = false;
-    private BoarSpawner spawner;
-    private GameController score;
+    [Header("Statistics")]
+    public float speed;
+    [SerializeField]private int healthPoints = 1;
+    [Header("Player Position")]
+    public Transform target; //player position
+    private Transform boar; //enemy position
+    private GameController score; //used to increase score
 
-    // Start is called before the first frame update
     void Start()
     {
-        spawner = FindObjectOfType<BoarSpawner>();
-        //pobierz pozycję dzika
         boar = GetComponent<Transform>();
         score = FindObjectOfType<GameController>();
-        Rotation();
         if (isTank)
         {
             healthPoints = 2;
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         MoveTowards();
         if(moveFaster)
@@ -41,37 +31,12 @@ public class Enemy : MonoBehaviour
             MoveFaster();
         }
     }
-
+    //Moves enemy toward player position
     void MoveTowards()
     {
         Vector2 boarTransform = boar.transform.position;
         Vector2 targetTransform = target.transform.position;
-        //przemieszczaj dzika w kierunku gracza
         transform.position = Vector2.MoveTowards(boarTransform, targetTransform, speed * Time.deltaTime);
-    }
-
-    void Rotation()
-    {
-        if (shouldRotate)
-        {
-            //w zależności od pozycji dzikia obróć jego teksturke
-            if (transform.position.x < 0 && transform.position.y == 0)
-            {
-                transform.Rotate(0, 0, 0, Space.World);
-            }
-            else if (transform.position.x == 0 && transform.position.y > 0)
-            {
-                transform.Rotate(0, 0, -90, Space.World);
-            }
-            else if (transform.position.x == 0 && transform.position.y < 0)
-            {
-                transform.Rotate(0, 0, 90, Space.World);
-            }
-            else if (transform.position.x > 0 && transform.position.y == 0)
-            {
-                transform.Rotate(0, 180, 0, Space.World);
-            }
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -98,6 +63,7 @@ public class Enemy : MonoBehaviour
             speed += 0.25f;
         }
     }
+    //Score for killing enemy depends on their type
     private void ScoreHandler()
     {
         if(moveFaster)

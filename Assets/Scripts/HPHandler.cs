@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HPHandler : MonoBehaviour
 {
-    private Player player;
+    [Header("Number of lives")]
     public int HPNumber;
-    // Start is called before the first frame update
+    private Player player; //used to check if number of player lives
+
     void Start()
     {
         player = FindObjectOfType<Player>();
@@ -17,7 +16,7 @@ public class HPHandler : MonoBehaviour
     {
         HideHealth(HPNumber);
     }
-
+    
     void HideHealth(int HPNumber)
     {
         if(player.HP==HPNumber)
